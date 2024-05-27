@@ -10,10 +10,6 @@ public class ProductsManagerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProductsManagerApplication.class, args);
         System.out.println("Application started");
-        Product p1 = new Product(1, "Coca-Cola", 1223);
-        System.out.println(p1.getPriceInReais());
-
-
     }
 
 }
