@@ -1,6 +1,5 @@
 package com.dr1.tp2;
 
-import com.dr1.tp2.model.domain.Product;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
