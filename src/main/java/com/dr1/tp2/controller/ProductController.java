@@ -3,8 +3,8 @@ package com.dr1.tp2.controller;
 import com.dr1.tp2.model.domain.Product;
 import com.dr1.tp2.model.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -20,22 +20,13 @@ public class ProductController {
     }
 
     @GetMapping
-    ResponseEntity getAll() {
-        try {
-            return ResponseEntity.ok(productService.getAll());
-        }catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    Flux<Product> getAll() {
+        return productService.getAll();
     }
 
     @GetMapping("/{id}")
-    ResponseEntity getById(@PathVariable int id) {
-        try {
-            Mono p = productService.getById(id);
-            return ResponseEntity.ok(p);
-        }catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    Mono<Product> getById(@PathVariable int id) {
+        return productService.getById(id);
     }
 
     @PutMapping("/{id}")
